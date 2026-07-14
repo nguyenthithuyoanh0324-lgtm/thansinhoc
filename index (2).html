@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang='vi'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Tính Hiệu Suất Thu Hồi Biochar</title><style>*{box-sizing:border-box;font-family:Segoe UI,Arial}body{margin:0;background:linear-gradient(135deg,#0f766e,#065f46);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}.container{background:#fff;padding:30px;border-radius:16px;max-width:650px;width:100%}.result{display:none;background:#ecfdf5;padding:15px;margin-top:20px}label{display:block;margin-top:14px;font-weight:bold}input{width:100%;padding:10px}button{margin-top:16px;padding:10px 16px}</style></head><body><div class='container'><h2>TÍNH HIỆU SUẤT THU HỒI BIOCHAR</h2><label>M₀</label><input id='m0' type='number' step='0.0001'><label>M₁</label><input id='m1' type='number' step='0.0001'><label>M₂</label><input id='m2' type='number' step='0.0001'><button onclick='calc()'>Tính toán</button><div id='r' class='result'><p>Sinh khối: <b id='bio'></b> g</p><p>Biochar: <b id='char'></b> g</p><p>Hiệu suất: <b id='eff'></b>%</p></div><script>
+function calc(){
+const M0=parseFloat(document.getElementById('m0').value);
+const M1=parseFloat(document.getElementById('m1').value);
+const M2=parseFloat(document.getElementById('m2').value);
+if(isNaN(M0)||isNaN(M1)||isNaN(M2)){alert('Nhập đủ dữ liệu');return;}
+const biomass=M1-M0,biochar=M2-M0;
+if(biomass<=0){alert('M1 phải lớn hơn M0');return;}
+document.getElementById('bio').textContent=biomass.toFixed(4);
+document.getElementById('char').textContent=biochar.toFixed(4);
+document.getElementById('eff').textContent=((biochar/biomass)*100).toFixed(2);
+document.getElementById('r').style.display='block';
+}
+</script></div></body></html>
